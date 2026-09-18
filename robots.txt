@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://onlineincome5g.github.io/T/sitemap.xml
