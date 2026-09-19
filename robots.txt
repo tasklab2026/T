@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://onlineincome5g.github.io/T/sitemap.xml
+Sitemap: https://tasklab2026.github.io/.-com/sitemap.xml
