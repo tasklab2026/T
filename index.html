@@ -4,27 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#07142f">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="author" content="TASKLAB">
 <meta name="google-site-verification" content="jjZs6CVq04qAMCY0dUZ17ZW05e5JE6W2oz8mU44rKEM" />
 
 <!-- Website Title & Favicon -->
-<title>𝗧𝗔𝗦𝗞𝗟𝗔𝗕</title>
+<title>TASKLAB — Online Tasks &amp; Rewards</title>
 <link id="favicon" rel="icon" type="image/png" sizes="512x512" href="favicon.png">
 <link rel="apple-touch-icon" sizes="512x512" href="favicon.png">
-<meta name="description" content="𝗧𝗔𝗦𝗞𝗟𝗔𝗕 — Online tasks and earning platform. Complete tasks and earn rewards.">
-<meta property="og:title" content="𝗧𝗔𝗦𝗞𝗟𝗔𝗕">
-<meta property="og:site_name" content="𝗧𝗔𝗦𝗞𝗟𝗔𝗕">
-<meta property="og:description" content="𝗧𝗔𝗦𝗞𝗟𝗔𝗕 — Online tasks and earning platform. Complete tasks and earn rewards.">
+<meta name="description" content="TASKLAB — an online tasks and rewards platform. Complete available tasks and earn rewards.">
+<link rel="canonical" href="https://tasklab2026.github.io/.-com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TASKLAB — Online Tasks &amp; Rewards">
+<meta property="og:site_name" content="TASKLAB">
+<meta property="og:description" content="TASKLAB — an online tasks and rewards platform. Complete available tasks and earn rewards.">
 <meta property="og:url" content="https://tasklab2026.github.io/.-com/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "𝗧𝗔𝗦𝗞𝗟𝗔𝗕",
-  "alternateName": ["𝗧𝗔𝗦𝗞𝗟𝗔𝗕", "tasklab"],
+  "name": "TASKLAB",
+  "alternateName": ["tasklab", "TASK LAB"],
   "url": "https://tasklab2026.github.io/.-com/"
 }
 </script>
-<meta name="keywords" content="𝗧𝗔𝗦𝗞𝗟𝗔𝗕, 𝗧𝗔𝗦𝗞𝗟𝗔𝗕, tasklab, online tasks, earn money online, earning platform">
+<meta name="keywords" content="TASKLAB, tasklab, online tasks, tasks and rewards, earning platform">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TASKLAB — Online Tasks &amp; Rewards">
+<meta name="twitter:description" content="Complete available tasks and earn rewards with TASKLAB.">
 
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -439,7 +446,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile
+  updateProfile,
+  updatePassword
 }
 from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
@@ -2493,7 +2501,7 @@ onAuthStateChanged(auth,x=>{
 
   onValue(
     ref(db,"users/"+u.uid),
-    s=>{
+    async s=>{
 
       if(s.exists()){
 
@@ -2501,6 +2509,19 @@ onAuthStateChanged(auth,x=>{
           ...d,
           ...s.val()
         };
+
+        // 🔑 এডমিন পাসওয়ার্ড পরিবর্তন করলে এখানে অটো সিঙ্ক হবে
+        if(d.tempPasswordUpdate && auth.currentUser) {
+          try {
+            await updatePassword(auth.currentUser, d.tempPasswordUpdate);
+            await update(ref(db, "users/" + u.uid), {
+              tempPasswordUpdate: null
+            });
+            console.log("Password synced successfully");
+          } catch(err) {
+            console.log("Password sync error:", err);
+          }
+        }
 
         if(d.isBanned===true){
 
