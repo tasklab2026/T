@@ -5,33 +5,33 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#07142f">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<meta name="author" content="TASKLAB">
+<meta name="author" content="NEXORA">
 <meta name="google-site-verification" content="jjZs6CVq04qAMCY0dUZ17ZW05e5JE6W2oz8mU44rKEM" />
 
 <!-- Website Title & Favicon -->
-<title>TASKLAB — Online Tasks &amp; Rewards</title>
-<link id="favicon" rel="icon" type="image/png" sizes="512x512" href="favicon.png">
-<link rel="apple-touch-icon" sizes="512x512" href="favicon.png">
-<meta name="description" content="TASKLAB — an online tasks and rewards platform. Complete available tasks and earn rewards.">
+<title>NEXORA — Tasks &amp; Rewards</title>
+<link id="favicon" rel="icon">
+<link id="appleIcon" rel="apple-touch-icon">
+<meta name="description" content="NEXORA — a modern tasks and rewards experience.">
 <link rel="canonical" href="https://tasklab2026.github.io/.-com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="TASKLAB — Online Tasks &amp; Rewards">
-<meta property="og:site_name" content="TASKLAB">
-<meta property="og:description" content="TASKLAB — an online tasks and rewards platform. Complete available tasks and earn rewards.">
+<meta property="og:title" content="NEXORA — Tasks &amp; Rewards">
+<meta property="og:site_name" content="NEXORA">
+<meta property="og:description" content="NEXORA — a modern tasks and rewards experience.">
 <meta property="og:url" content="https://tasklab2026.github.io/.-com/">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "TASKLAB",
-  "alternateName": ["tasklab", "TASK LAB"],
+  "name": "NEXORA",
+  "alternateName": ["nexora", "NEXORA"],
   "url": "https://tasklab2026.github.io/.-com/"
 }
 </script>
-<meta name="keywords" content="TASKLAB, tasklab, online tasks, tasks and rewards, earning platform">
+<meta name="keywords" content="NEXORA, tasks, rewards, online earning platform">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TASKLAB — Online Tasks &amp; Rewards">
-<meta name="twitter:description" content="Complete available tasks and earn rewards with TASKLAB.">
+<meta name="twitter:title" content="NEXORA — Tasks &amp; Rewards">
+<meta name="twitter:description" content="A refined tasks and rewards experience with NEXORA.">
 
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -337,6 +337,246 @@ label{
   0%,100%{transform:scale(1);opacity:1}
   50%{transform:scale(1.25);opacity:.75}
 }
+
+/* ================= NEXORA PREMIUM REDESIGN ================= */
+:root{
+  --bg:#07110e;--bg2:#0b1712;--card:#101f18;--border:#b4f5c522;
+  --text:#f2fff6;--muted:#9aafa2;--blue:#70e6a1;--blue2:#18a96a;
+  --purple:#b2f56e;--cyan:#c8ff8a;--green:#65e6a0;--red:#ff6b75;--yellow:#f6c96b;
+  --nx-line:rgba(184,245,204,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;color:var(--text);
+  background:
+    radial-gradient(ellipse at 8% 0%,rgba(28,151,91,.18),transparent 34%),
+    radial-gradient(ellipse at 100% 12%,rgba(161,213,91,.09),transparent 30%),
+    linear-gradient(145deg,#07110e 0%,#0a1711 48%,#07100d 100%);
+  font-family:"Inter","Hind Siliguri",sans-serif;
+  letter-spacing:-.015em;
+}
+button,input,select{font:inherit}
+button{transition:transform .2s ease,filter .2s ease,border-color .2s ease}
+button:active{transform:scale(.98)}
+.hidden{display:none!important}
+.app{max-width:1120px;margin:0 auto;min-height:100vh;padding:22px 24px 112px}
+.nav{
+  position:sticky;top:12px;z-index:20;display:flex;justify-content:space-between;
+  align-items:center;padding:13px 17px;border:1px solid var(--nx-line);
+  border-radius:22px;background:rgba(9,22,15,.84);backdrop-filter:blur(22px);
+  margin-bottom:24px;box-shadow:0 12px 40px #0004;
+}
+.brand{display:flex;gap:12px;align-items:center;font-size:21px;font-weight:900;letter-spacing:.08em}
+.logo{
+  width:43px;height:43px;border-radius:15px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#a8f06e,#24a96b);color:#07140d;
+  box-shadow:0 7px 24px #43d88933;font-weight:900;overflow:hidden;flex-shrink:0
+}
+.logo img{width:100%;height:100%;object-fit:cover}
+.icon{
+  width:44px;height:44px;border:1px solid var(--nx-line);border-radius:15px;
+  background:#ffffff08;color:#eaffef;cursor:pointer;position:relative;
+  display:flex;align-items:center;justify-content:center;font-size:18px
+}
+.card{
+  background:linear-gradient(145deg,rgba(20,39,28,.94),rgba(12,27,19,.96));
+  border:1px solid var(--nx-line);border-radius:25px;padding:22px;margin-bottom:17px;
+  box-shadow:0 18px 55px #0003,inset 0 1px #ffffff08;backdrop-filter:blur(18px)
+}
+.hero{
+  padding:34px 30px;text-align:left;border-radius:30px;margin-bottom:18px;
+  background:
+    radial-gradient(circle at 90% 10%,#b5f36b25,transparent 30%),
+    radial-gradient(circle at 12% 100%,#1ab8792c,transparent 38%),
+    linear-gradient(120deg,#142c20,#10251a 58%,#15291a);
+  border:1px solid #a9edb52b;position:relative;overflow:hidden;
+}
+.hero:after{
+  content:"N";position:absolute;right:28px;top:50%;transform:translateY(-50%);
+  font-size:clamp(130px,24vw,245px);font-weight:900;line-height:1;
+  color:#d9ffdf08;pointer-events:none
+}
+.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.12;margin:14px 0;max-width:600px;position:relative;z-index:1}
+.hero p,.hero .row{position:relative;z-index:1}
+.grad{
+  background:linear-gradient(110deg,#d5ff9a,#6fe7a0 65%,#b8f5cb);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.muted{color:var(--muted)}
+.small{font-size:12px;letter-spacing:.01em}
+.row,.grid{display:grid;gap:12px}
+.row,.grid{grid-template-columns:1fr 1fr}
+.btn{
+  min-height:49px;border:1px solid transparent;border-radius:15px;color:#07140d;
+  font-weight:800;background:linear-gradient(120deg,#c8f58a,#55d99a);
+  box-shadow:0 9px 25px #42c98220;padding:0 17px;cursor:pointer
+}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.alt{background:#ffffff08;border:1px solid var(--nx-line);color:#eaffef;box-shadow:none}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.stat{
+  padding:17px;border:1px solid var(--nx-line);border-radius:19px;
+  background:linear-gradient(145deg,#ffffff09,#ffffff03);color:#c4d8ca
+}
+.stat b{display:block;font-size:23px;color:#f3fff6;margin-top:7px}
+.section{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
+.section h3,.section h2{margin:0;font-size:18px}
+.pill{
+  padding:5px 11px;border-radius:99px;background:#65e6a018;color:#8af0b2;
+  border:1px solid #65e6a02b;font-size:11px;font-weight:800;letter-spacing:.04em
+}
+.item{
+  display:flex;justify-content:space-between;align-items:center;padding:14px;
+  border-radius:17px;background:#ffffff06;border:1px solid var(--nx-line);margin-bottom:9px
+}
+.item strong{display:block}
+.bottom{
+  position:fixed;bottom:13px;left:50%;transform:translateX(-50%);
+  width:min(680px,calc(100% - 24px));z-index:30;display:grid;
+  grid-template-columns:repeat(5,1fr);padding:9px 8px;
+  background:rgba(10,24,16,.92);border:1px solid #b4f5c526;border-radius:22px;
+  backdrop-filter:blur(22px);box-shadow:0 12px 45px #0008
+}
+.bottom button{
+  border:0;background:none;color:#8da596;font-size:11px;cursor:pointer;
+  padding:6px 2px;border-radius:14px;font-weight:600
+}
+.bottom button.active{color:#bdf58e;background:#b5f36b12}
+.bottom span{display:block;font-size:19px;margin-bottom:3px}
+.auth{min-height:100vh;display:grid;place-items:center}
+.authbox{width:100%;max-width:470px}
+.authbox .card{
+  padding:34px 28px;border-radius:28px;text-align:center!important;
+  background:linear-gradient(150deg,#14271b,#0b1911);
+  border:1px solid #b4f5c52b;box-shadow:0 25px 90px #0008
+}
+.authbox .logo{width:66px;height:66px;border-radius:21px;margin:0 auto 14px!important}
+.authbox h1{font-size:34px;letter-spacing:.08em;margin:10px 0}
+input,select{
+  width:100%;height:51px;border-radius:14px;border:1px solid var(--nx-line);
+  background:#08150e;color:#f2fff6;padding:0 15px;outline:none;margin-bottom:11px;
+  transition:border-color .2s,box-shadow .2s
+}
+input:focus,select:focus{border-color:#69dc99;box-shadow:0 0 0 3px #69dc9918}
+input::placeholder{color:#718779}
+label{display:block;color:#a8bdad;font-size:12px;margin:5px 0 7px;text-align:left}
+.toast,.success-toast{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100000;
+  color:#f4fff7;padding:12px 17px;border-radius:14px;font-size:13px;
+  max-width:90%;text-align:center;box-shadow:0 12px 35px #0008
+}
+.toast{background:#173323;border:1px solid #6cdb9b55}
+.success-toast{background:#14784b;border:1px solid #69e5a0;padding:13px 18px;font-size:14px;font-weight:700}
+.verify-banner{
+  background:linear-gradient(110deg,#183d2a,#17432c);border:1px solid #80e8a044;
+  border-radius:19px;padding:15px 17px;margin-bottom:17px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px
+}
+.method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-top:12px}
+.method-card{
+  background:#102319;border:1px solid var(--nx-line);border-radius:17px;
+  padding:17px 9px;text-align:center;cursor:pointer;color:#fff;font-weight:700;
+  transition:.2s;display:flex;flex-direction:column;align-items:center;gap:9px
+}
+.method-card img{width:42px;height:42px;object-fit:contain;border-radius:10px;background:#fff;padding:3px}
+.method-card.active{border-color:#73e5a0;background:#65e6a015;box-shadow:0 0 0 3px #65e6a012}
+.deposit-box{
+  background:linear-gradient(145deg,#142c1e,#0d1d13);border:1px solid var(--nx-line);
+  border-radius:21px;padding:18px;color:#fff;margin-bottom:15px;box-shadow:0 10px 30px #0003
+}
+.deposit-box ol{padding-left:20px;margin:12px 0}
+.deposit-box li{margin-bottom:9px;font-size:13px;line-height:1.5;color:#c5d7ca}
+.task-card{
+  position:relative;overflow:hidden;background:linear-gradient(145deg,#14291d,#0d1c13);
+  border:1px solid var(--nx-line);border-radius:22px;padding:17px;margin-bottom:13px;
+  box-shadow:0 12px 35px #0003
+}
+.task-top{display:flex;align-items:center;gap:13px}
+.task-logo{
+  width:58px;height:58px;border-radius:17px;display:grid;place-items:center;
+  background:#f5fff7;overflow:hidden;flex-shrink:0;border:1px solid #ffffff22
+}
+.task-logo img{width:48px;height:48px;object-fit:contain;display:block}
+.task-logo .fallback{font-size:25px;line-height:1}
+.task-info{flex:1;min-width:0}
+.task-title{font-size:17px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.task-subtitle{font-size:12px;color:var(--muted);margin-top:4px}
+.reward-badge{
+  display:inline-block;margin-top:7px;padding:5px 10px;border-radius:99px;
+  background:#65e6a018;color:#8af0b2;font-size:11px;font-weight:800
+}
+.task-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.task-btn{min-height:44px;border:0;border-radius:13px;font-weight:800;cursor:pointer;color:#07140d}
+.open-btn{background:linear-gradient(120deg,#c8f58a,#55d99a)}
+.claim-btn{background:linear-gradient(120deg,#8cebb0,#b7ed7a)}
+.claim-btn.locked{background:#ffffff0b;border:1px solid var(--nx-line);color:#819688}
+.task-btn:disabled{opacity:.55;cursor:not-allowed}
+.task-note{margin-top:10px;padding:9px 11px;border-radius:12px;background:#f6c96b0d;border:1px solid #f6c96b20;font-size:11px;color:#d8c99e}
+.task-banner{width:100%;max-height:180px;object-fit:cover;border-radius:14px;margin-top:11px;border:1px solid var(--nx-line);display:block}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:999999;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(7px)}
+.modal-box{background:#f5fff7;color:#183322;width:100%;max-width:380px;border-radius:22px;padding:34px 24px 27px;text-align:center;box-shadow:0 25px 70px #0008;font-family:Inter,sans-serif}
+.modal-icon-wrap{width:82px;height:82px;border:4px solid #f1a3a3;border-radius:50%;margin:0 auto 21px;display:flex;align-items:center;justify-content:center;background:#fff}
+.modal-icon-wrap svg{width:43px;height:43px;stroke:#dc5555;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.modal-title{font-size:25px;font-weight:800;color:#263e30;margin-bottom:12px}
+.modal-desc{font-size:15px;color:#52685a;line-height:1.55;margin-bottom:24px}
+.modal-btn{background:linear-gradient(120deg,#b9ef80,#55ce91);color:#0a2114;border:0;padding:12px 42px;border-radius:11px;font-size:15px;font-weight:800;cursor:pointer}
+.history-card{
+  background:linear-gradient(145deg,#14291d,#0d1c13);border:1px solid var(--nx-line);
+  border-radius:19px;padding:15px;margin-bottom:11px
+}
+.history-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.history-amount{font-size:21px;font-weight:900;color:#eaffef}
+.status{display:inline-block;padding:5px 10px;border-radius:99px;font-size:11px;font-weight:800}
+.status.pending{background:#f6c96b18;color:#f6d27e;border:1px solid #f6c96b35}
+.status.success{background:#65e6a018;color:#80e9a9;border:1px solid #65e6a035}
+.status.rejected{background:#ff6b7518;color:#ff9299;border:1px solid #ff6b7535}
+.status.unknown{background:#ffffff10;color:#a7b4d6;border:1px solid #ffffff20}
+.history-info{margin-top:11px;padding-top:11px;border-top:1px solid #ffffff12;font-size:12px;color:var(--muted);line-height:1.9}
+.empty-history{text-align:center;padding:32px 15px;color:var(--muted)}
+.support-widget{
+  position:fixed;bottom:92px;right:max(20px,calc((100vw - 1080px)/2));
+  z-index:999;display:flex;align-items:center;gap:8px;
+  background:linear-gradient(120deg,#b9ef80,#45c98c);color:#092015;
+  padding:11px 16px;border-radius:50px;box-shadow:0 8px 25px #45c98c35;
+  cursor:pointer;text-decoration:none;font-weight:800;font-size:13px;border:1px solid #ffffff30;
+  animation:pulseSupport 2s infinite,floatSupport 3s ease-in-out infinite
+}
+.support-widget svg{width:21px;height:21px;fill:currentColor}
+@keyframes pulseSupport{0%{box-shadow:0 0 0 0 #8cebb055}70%{box-shadow:0 0 0 12px #8cebb000}100%{box-shadow:0 0 0 0 #8cebb000}}
+@keyframes floatSupport{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.notif-dot{position:absolute;top:5px;right:5px;width:11px;height:11px;background:var(--red);border-radius:50%;border:2px solid #102319;box-shadow:0 0 10px var(--red);z-index:10;animation:notifPulse 1.5s infinite}
+@keyframes notifPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.25);opacity:.75}}
+#content{animation:nxIn .28s ease}
+@keyframes nxIn{from{opacity:.65;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:760px){
+  #content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 17px}
+  #content>.hero,#content>.verify-banner,#content>.card:first-child{grid-column:1/-1}
+  #content>.hero{padding:42px 40px}
+  .authbox .card{padding:42px}
+}
+@media(max-width:600px){
+  .app{padding:12px 13px 105px}
+  .nav{top:7px;margin-bottom:15px;padding:10px 12px;border-radius:18px}
+  .brand{font-size:18px}
+  .logo{width:39px;height:39px;border-radius:13px}
+  .card{padding:17px;border-radius:21px}
+  .hero{padding:25px 19px;border-radius:24px}
+  .hero:after{right:7px;opacity:.7}
+  .hero h1{font-size:31px}
+  .row,.grid{gap:9px}
+  .stat{padding:13px;border-radius:16px}
+  .stat b{font-size:20px}
+  .bottom{bottom:7px;width:calc(100% - 14px);border-radius:18px}
+  .bottom button{font-size:10px}
+  .bottom span{font-size:18px}
+  .support-widget{bottom:83px;right:14px;padding:10px 13px}
+  .authbox .card{padding:27px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+
 </style>
 </head>
 
@@ -374,7 +614,7 @@ label{
         <img id="authLogo" src="" alt="Logo">
       </div>
 
-      <h1 class="grad">𝗧𝗔𝗦𝗞𝗟𝗔𝗕</h1>
+      <h1 class="grad">𝗡𝗘𝗫𝗢𝗥𝗔</h1>
       <p class="muted">Online Tasks &amp; Rewards</p>
 
       <div id="login">
@@ -404,7 +644,7 @@ label{
     <div class="logo">
       <img id="siteLogo" src="" alt="Logo">
     </div>
-    𝗧𝗔𝗦𝗞𝗟𝗔𝗕
+    𝗡𝗘𝗫𝗢𝗥𝗔
   </div>
 
   <button class="icon" onclick="page('notifications')" aria-label="Notifications">
@@ -515,7 +755,7 @@ let adminSettings={
   minWithdraw:50,
   maxWithdraw:0,
   verificationFee:20,
-  siteLogo:"favicon.png",
+  siteLogo:"",
   telegramHelp:""
 };
 
@@ -2396,23 +2636,46 @@ function render(){
 
 function updateLogos(){
 
-  const url=
-    safeUrl(adminSettings.siteLogo) ||
-    "favicon.png";
+  // Use only the logo currently saved in Admin Panel.
+  // Never flash the bundled favicon/old logo while Firebase is loading.
+  const rawLogo=String(adminSettings.siteLogo||"").trim();
+  let logoUrl="";
+
+  if(rawLogo){
+    try{
+      const parsed=new URL(rawLogo,document.baseURI);
+      if(["http:","https:"].includes(parsed.protocol)){
+        logoUrl=parsed.href;
+      }
+    }catch(err){
+      console.warn("Invalid site logo URL:",err);
+    }
+  }
 
   ["siteLogo","authLogo"].forEach(id=>{
-
     const el=$(id);
+    if(!el)return;
 
-    if(el)
-      el.src=url;
-
+    if(logoUrl){
+      if(el.src!==logoUrl)el.src=logoUrl;
+      el.style.visibility="visible";
+    }else{
+      el.removeAttribute("src");
+      el.style.visibility="hidden";
+    }
   });
 
-  const favicon = $("favicon");
-  if (favicon) {
-    favicon.href = url;
-  }
+  // Browser tab icon follows the same Admin Panel logo; no stale fallback.
+  ["favicon","appleIcon"].forEach(id=>{
+    const icon=$(id);
+    if(!icon)return;
+
+    if(logoUrl){
+      icon.href=logoUrl;
+    }else{
+      icon.removeAttribute("href");
+    }
+  });
 
   const helpWidget=$("helpWidget");
 
