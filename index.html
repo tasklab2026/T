@@ -577,6 +577,50 @@ label{display:block;color:#a8bdad;font-size:12px;margin:5px 0 7px;text-align:lef
   *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 }
 
+
+/* ================= PROFILE APP INSTALL BANNER ================= */
+.app-install-banner{
+  display:flex;align-items:center;gap:12px;width:100%;
+  padding:12px;border:1px solid rgba(105,226,151,.35);
+  border-radius:24px;background:linear-gradient(120deg,#092b1b,#073522);
+  box-shadow:0 10px 28px #0004;margin:0 0 14px;
+}
+.app-install-icon{
+  width:64px;height:64px;min-width:64px;border-radius:17px;
+  object-fit:cover;background:#102b1c;border:1px solid #8cebb055;
+}
+.app-install-copy{flex:1;min-width:0}
+.app-install-title{
+  display:block;font-size:18px;font-weight:800;color:#f2fff6;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.app-install-desc{
+  display:block;margin-top:3px;color:#c2d8c9;font-size:13px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.app-install-action{
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+}
+.app-install-button{
+  min-height:48px;padding:0 17px;border:0;border-radius:16px;
+  background:linear-gradient(135deg,#a9f36e,#50dc91);
+  color:#092015;font-weight:900;font-size:16px;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.app-install-close{
+  width:42px;height:42px;min-width:42px;border-radius:50%;
+  border:1px solid #b4f5c544;background:#ffffff0c;color:#eaffef;
+  font-size:25px;line-height:1;cursor:pointer;
+}
+@media(max-width:390px){
+  .app-install-banner{gap:8px;padding:9px;border-radius:20px}
+  .app-install-icon{width:52px;height:52px;min-width:52px;border-radius:14px}
+  .app-install-title{font-size:15px}
+  .app-install-desc{font-size:11px}
+  .app-install-button{min-height:42px;padding:0 11px;font-size:14px}
+  .app-install-close{width:36px;height:36px;min-width:36px;font-size:22px}
+}
+
 </style>
 </head>
 
@@ -756,7 +800,12 @@ let adminSettings={
   maxWithdraw:0,
   verificationFee:20,
   siteLogo:"",
-  telegramHelp:""
+  telegramHelp:"",
+  appDownloadEnabled:true,
+  appDownloadTitle:"Apps install",
+  appDownloadDescription:"অফিশিয়াল অ্যাপ • দ্রুত ও সহজ",
+  appDownloadUrl:"",
+  appDownloadIcon:""
 };
 
 
@@ -787,6 +836,60 @@ function safeUrl(s){
     return "";
   }
 }
+
+/* ================= APP WEBVIEW DETECTION =================
+   AppMint Android apps normally open this site inside Android WebView.
+   Keep the install banner visible in normal browsers, but hide it in the app.
+*/
+function isOpenedInsideApp(){
+  const ua=navigator.userAgent||"";
+  const androidWebView=/Android/i.test(ua)&&(/;\s*wv\)/i.test(ua)||/\bwv\b/i.test(ua));
+  const iosWebView=/(iPhone|iPad|iPod)/i.test(ua)&&!/Safari/i.test(ua);
+  const nativeBridge=!!(
+    window.ReactNativeWebView||
+    window.Android||
+    window.androidBridge||
+    window.AppInventor
+  );
+  const explicitAppFlag=/(?:[?&](?:app|appmint|inapp)=1)(?:&|$)/i.test(location.search);
+  return androidWebView||iosWebView||appMintUserAgent||nativeBridge||explicitAppFlag;
+}
+
+function appInstallBannerHtml(){
+  if(isOpenedInsideApp())return "";
+  if(adminSettings.appDownloadEnabled===false)return "";
+
+  const installUrl=safeUrl(adminSettings.appDownloadUrl);
+  if(!installUrl)return "";
+
+  const title=String(adminSettings.appDownloadTitle||"Apps install").trim();
+  const description=String(adminSettings.appDownloadDescription||"অফিশিয়াল অ্যাপ • দ্রুত ও সহজ").trim();
+  const icon=safeUrl(adminSettings.appDownloadIcon)||safeUrl(adminSettings.siteLogo);
+  const dismissed=sessionStorage.getItem("nexoraAppInstallDismissed")==="1";
+  if(dismissed)return "";
+
+  return `
+    <div class="app-install-banner" id="appInstallBanner">
+      ${icon
+        ? `<img class="app-install-icon" src="${esc(icon)}" alt="App icon">`
+        : `<div class="app-install-icon" style="display:grid;place-items:center;font-size:27px">📱</div>`}
+      <div class="app-install-copy">
+        <strong class="app-install-title">${esc(title)}</strong>
+        <span class="app-install-desc">${esc(description)}</span>
+      </div>
+      <div class="app-install-action">
+        <a class="app-install-button" href="${esc(installUrl)}" target="_blank" rel="noopener noreferrer">Install</a>
+        <button class="app-install-close" type="button" aria-label="বন্ধ করুন" onclick="dismissAppInstall()">×</button>
+      </div>
+    </div>
+  `;
+}
+
+window.dismissAppInstall=()=>{
+  sessionStorage.setItem("nexoraAppInstallDismissed","1");
+  const banner=$("appInstallBanner");
+  if(banner)banner.remove();
+};
 
 
 /* ================= TASK HELPERS ================= */
@@ -2129,6 +2232,8 @@ function profile(){
   return `
 
     ${verifyBannerHtml()}
+
+    ${appInstallBannerHtml()}
 
     <div class="card">
 
