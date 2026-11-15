@@ -610,6 +610,24 @@ label{display:block;color:#a8bdad;font-size:12px;margin:5px 0 7px;text-align:lef
   *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 }
 
+
+/* Admin-controlled temporary website shutdown */
+#nxMaintenanceScreen{
+  position:fixed;inset:0;z-index:2147483646;display:none;
+  align-items:center;justify-content:center;padding:24px;
+  background:radial-gradient(circle at 50% 20%,#1c4930 0%,#0a1710 48%,#050b07 100%);
+  color:#f2fff6;text-align:center;font-family:"Inter","Hind Siliguri",sans-serif;
+}
+#nxMaintenanceScreen.nx-maintenance-active{display:flex}
+#nxMaintenanceScreen .nx-maintenance-card{
+  width:100%;max-width:480px;padding:34px 26px;border-radius:25px;
+  background:linear-gradient(145deg,#142c1e,#0b1911);
+  border:1px solid #b4f5c544;box-shadow:0 22px 70px #0009;
+}
+#nxMaintenanceScreen .nx-maintenance-icon{font-size:48px;margin-bottom:12px}
+#nxMaintenanceScreen h1{font-size:27px;margin:0 0 12px}
+#nxMaintenanceScreen p{color:#b9cdbf;line-height:1.7;margin:0}
+
 </style>
 </head>
 
@@ -706,6 +724,14 @@ label{display:block;color:#a8bdad;font-size:12px;margin:5px 0 7px;text-align:lef
   </button>
 </nav>
 
+</div>
+
+<div id="nxMaintenanceScreen" role="alert" aria-live="polite">
+  <div class="nx-maintenance-card">
+    <div class="nx-maintenance-icon">🛠️</div>
+    <h1>ওয়েবসাইট সাময়িকভাবে বন্ধ</h1>
+    <p>বর্তমানে ওয়েবসাইটে কাজ চলছে। অনুগ্রহ করে কিছুক্ষণ পর আবার চেষ্টা করুন।</p>
+  </div>
 </div>
 
 <script type="module">
@@ -2768,6 +2794,15 @@ window.page=p=>{
 };
 
 
+/* ================= ADMIN WEBSITE AVAILABILITY ================= */
+function applyWebsiteAvailability(){
+  const screen = $("nxMaintenanceScreen");
+  if(!screen) return;
+  const isDisabled = adminSettings.siteEnabled === false;
+  screen.classList.toggle("nx-maintenance-active", isDisabled);
+  document.body.style.overflow = isDisabled ? "hidden" : "";
+}
+
 /* ================= FIREBASE LISTENERS ================= */
 
 onValue(
@@ -2780,6 +2815,7 @@ onValue(
         ...s.val()
       };
 
+    applyWebsiteAvailability();
     updateLogos();
 
   }
